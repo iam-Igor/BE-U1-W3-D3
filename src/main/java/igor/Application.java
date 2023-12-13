@@ -33,13 +33,12 @@ public class Application {
         Location roma = new Location("Villa", "Roma");
         Location paese = new Location("All_city", "Cosenza");
 
-        //        salvate!
-
 
         Location romaFromDB = ld.findById(11);
         Location paeseFromDB = ld.findById(12);
 
 
+        //        salvate!
         Evento festaInPiscina = new Evento("Festa in piscina", "2023-01-01", EventType.PRIVATO, 200, romaFromDB);
         Evento festaPatronale = new Evento("Festa Patronale", "2024-06-06", EventType.PUBBLICO, 2000, paeseFromDB);
 
@@ -55,10 +54,11 @@ public class Application {
         Persona mariofromDB = persd.findById(22);
         Persona peachFromDB = persd.findById(23);
 
+        //salvate!
         Partecipazione uno = new Partecipazione(mariofromDB, festaPatrFromDB, Stato.CONFERMATA);
         Partecipazione due = new Partecipazione(peachFromDB, piscinaFromnDB, Stato.DA_CONFERMARE);
 
-    
+
         System.out.println("--------partecipazioni di peach-----------------");
         peachFromDB.getPartecipazioni().forEach(System.out::println);
 
