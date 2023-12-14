@@ -5,6 +5,7 @@ import java.util.Set;
 
 @Entity
 @DiscriminatorValue("gara_atletica")
+@NamedQuery(name = "getGareDiAtleticaPerVincitore", query = "SELECT p.vincitore FROM GaraDiAtletica p")
 public class GaraDiAtletica extends Evento {
 
     @OneToMany(mappedBy = "garaDiAtletica")

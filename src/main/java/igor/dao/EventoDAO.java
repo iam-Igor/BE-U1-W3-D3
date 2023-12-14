@@ -1,9 +1,6 @@
 package igor.dao;
 
-import igor.entities.Concerto;
-import igor.entities.Evento;
-import igor.entities.Genere;
-import igor.entities.PartitaDICalcio;
+import igor.entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -89,4 +86,12 @@ public class EventoDAO {
         TypedQuery<PartitaDICalcio> partitePari = em.createNamedQuery("getPartitePareggiate", PartitaDICalcio.class);
         return partitePari.getResultList();
     }
+
+
+    public List<Persona> getVincitoreGara() {
+        TypedQuery<Persona> vincitoreGara = em.createNamedQuery("getGareDiAtleticaPerVincitore", Persona.class);
+        return vincitoreGara.getResultList();
+    }
+
+
 }

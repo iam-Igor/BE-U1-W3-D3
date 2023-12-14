@@ -110,9 +110,17 @@ public class Application {
         System.out.println("Partite con squadra ospite vincente:");
         partiteVinteIntrasferta.forEach(System.out::println);
 
+
+//        ----------------------------EXTRAS-----------------------------------
+
         List<PartitaDICalcio> partitePari = sd.getPartitePareggiate();
         System.out.println("Partite finite in pareggio:");
         partitePari.forEach(System.out::println);
+
+
+        List<Persona> vincitoriGareDIAtletica = sd.getVincitoreGara();
+        System.out.println("Vincitori delle gare di Atletica:");
+        vincitoriGareDIAtletica.forEach(System.out::println);
 
 
     }
