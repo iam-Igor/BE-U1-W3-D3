@@ -19,6 +19,9 @@ public class Application {
 
     public static void main(String[] args) {
 
+
+//        ESERCIZIO 1
+
         EntityManager em = emf.createEntityManager();
         EventoDAO sd = new EventoDAO(em);
         PartecipazioneDAO pd = new PartecipazioneDAO(em);
@@ -69,6 +72,47 @@ public class Application {
 
         List<Concerto> concertiPerGenere = sd.getConcertiPerGenere(Genere.POP);
         concertiPerGenere.forEach(System.out::println);
+
+
+        //       ---------------------------------------ESERCIZIO 2----------------------------------------
+
+        Location stJamesPark = new Location("St James Park", "Newcastle");
+        Location sanSiro = new Location("San Siro", "Milano");
+        Location gewissStadium = new Location("Gewiss Stadium", "Bergamo");
+
+//        ld.save(stJamesPark);
+//        ld.save(sanSiro);
+//        ld.save(gewissStadium);
+
+        Location stJamesFromDb = ld.findById(47);
+        Location sanSiroFromDb = ld.findById(48);
+        Location gewissFromDb = ld.findById(51);
+
+
+        PartitaDICalcio newcastleVsMilan = new PartitaDICalcio("Newcastle-Milan", "2023-13-12", EventType.PUBBLICO, 60000, stJamesFromDb, "Newcastle", "Milan", "Milan", 1, 2);
+        PartitaDICalcio milanVsBorussia = new PartitaDICalcio("Milan-Borussia Dortmund", "2023-01-12", EventType.PUBBLICO, 70000, sanSiroFromDb, "Milan", "Borussia Dortmund", "Borussia Dortmund", 2, 3);
+        PartitaDICalcio atalantaVsMilan = new PartitaDICalcio("Atalanta-Milan", "2023-07-12", EventType.PUBBLICO, 30000, gewissFromDb, "Atalanta", "Milan", "Atalanta", 3, 2);
+        PartitaDICalcio borussiaVsMilan = new PartitaDICalcio("Borussia Dortmund-Milan", "2023-07-10", EventType.PUBBLICO, 30000, sanSiroFromDb, "Borussia Dortmund", "Milan", null, 0, 0);
+
+
+//        sd.save(newcastleVsMilan);
+//        sd.save(milanVsBorussia);
+//        sd.save(atalantaVsMilan);
+//        sd.save(borussiaVsMilan);
+
+
+        List<PartitaDICalcio> partiteVinteInCasa = sd.getPartiteVinteInCasa();
+        System.out.println("Partite con squadra di casa vincente:");
+        partiteVinteInCasa.forEach(System.out::println);
+
+
+        List<PartitaDICalcio> partiteVinteIntrasferta = sd.getPartiteVinteInTraferta();
+        System.out.println("Partite con squadra ospite vincente:");
+        partiteVinteIntrasferta.forEach(System.out::println);
+
+        List<PartitaDICalcio> partitePari = sd.getPartitePareggiate();
+        System.out.println("Partite finite in pareggio:");
+        partitePari.forEach(System.out::println);
 
 
     }

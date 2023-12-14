@@ -4,9 +4,13 @@ import com.sun.istack.Nullable;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 
 @Entity
 @DiscriminatorValue("partita")
+@NamedQuery(name = "getPartiteVinteInCasa", query = "SELECT p FROM PartitaDICalcio p WHERE p.goalSquadracasa > p.goalSquadraOspite")
+@NamedQuery(name = "getPartiteVinteInTrasferta", query = "SELECT p FROM PartitaDICalcio p WHERE p.goalSquadracasa < p.goalSquadraOspite")
+@NamedQuery(name = "getPartitePareggiate", query = "SELECT p FROM PartitaDICalcio p WHERE p.goalSquadracasa = p.goalSquadraOspite")
 public class PartitaDICalcio extends Evento {
 
     private String squadraDiCasa;
@@ -16,7 +20,7 @@ public class PartitaDICalcio extends Evento {
     private String squadraVincente;
 
     private int goalSquadracasa;
-    private int getGoalSquadraOspite;
+    private int goalSquadraOspite;
 
 
     public PartitaDICalcio() {
@@ -29,7 +33,7 @@ public class PartitaDICalcio extends Evento {
         this.squadraOspite = squadraOspite;
         this.squadraVincente = squadraVincente;
         this.goalSquadracasa = goalSquadracasa;
-        this.getGoalSquadraOspite = getGoalSquadraOspite;
+        this.goalSquadraOspite = getGoalSquadraOspite;
     }
 
     public String getSquadraDiCasa() {
@@ -47,7 +51,7 @@ public class PartitaDICalcio extends Evento {
                 ", squadraOspite='" + squadraOspite + '\'' +
                 ", squadraVincente='" + squadraVincente + '\'' +
                 ", goalSquadracasa=" + goalSquadracasa +
-                ", getGoalSquadraOspite=" + getGoalSquadraOspite +
+                ", getGoalSquadraOspite=" + goalSquadraOspite +
                 '}';
     }
 
@@ -76,10 +80,10 @@ public class PartitaDICalcio extends Evento {
     }
 
     public int getGetGoalSquadraOspite() {
-        return getGoalSquadraOspite;
+        return goalSquadraOspite;
     }
 
     public void setGetGoalSquadraOspite(int getGoalSquadraOspite) {
-        this.getGoalSquadraOspite = getGoalSquadraOspite;
+        this.goalSquadraOspite = getGoalSquadraOspite;
     }
 }

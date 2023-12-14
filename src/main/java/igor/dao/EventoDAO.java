@@ -3,6 +3,7 @@ package igor.dao;
 import igor.entities.Concerto;
 import igor.entities.Evento;
 import igor.entities.Genere;
+import igor.entities.PartitaDICalcio;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -71,5 +72,21 @@ public class EventoDAO {
     public List<Concerto> getConcertoInStreaming() {
         TypedQuery<Concerto> concertoStreaming = em.createNamedQuery("concertoInStreaming", Concerto.class);
         return concertoStreaming.getResultList();
+    }
+
+
+    public List<PartitaDICalcio> getPartiteVinteInCasa() {
+        TypedQuery<PartitaDICalcio> vinteInCasa = em.createNamedQuery("getPartiteVinteInCasa", PartitaDICalcio.class);
+        return vinteInCasa.getResultList();
+    }
+
+    public List<PartitaDICalcio> getPartiteVinteInTraferta() {
+        TypedQuery<PartitaDICalcio> vinteInTrasferta = em.createNamedQuery("getPartiteVinteInTrasferta", PartitaDICalcio.class);
+        return vinteInTrasferta.getResultList();
+    }
+
+    public List<PartitaDICalcio> getPartitePareggiate() {
+        TypedQuery<PartitaDICalcio> partitePari = em.createNamedQuery("getPartitePareggiate", PartitaDICalcio.class);
+        return partitePari.getResultList();
     }
 }
