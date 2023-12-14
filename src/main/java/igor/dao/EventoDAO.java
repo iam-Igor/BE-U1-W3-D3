@@ -1,9 +1,13 @@
 package igor.dao;
 
+import igor.entities.Concerto;
 import igor.entities.Evento;
+import igor.entities.Genere;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class EventoDAO {
 
@@ -56,4 +60,16 @@ public class EventoDAO {
 
     }
 
+
+    public List<Concerto> getConcertiPerGenere(Genere genere) {
+
+        TypedQuery<Concerto> concertiPerGenere = em.createNamedQuery("getGenereConcerto", Concerto.class);
+        concertiPerGenere.setParameter("genere", genere);
+        return concertiPerGenere.getResultList();
+    }
+
+    public List<Concerto> getConcertoInStreaming() {
+        TypedQuery<Concerto> concertoStreaming = em.createNamedQuery("concertoInStreaming", Concerto.class);
+        return concertoStreaming.getResultList();
+    }
 }

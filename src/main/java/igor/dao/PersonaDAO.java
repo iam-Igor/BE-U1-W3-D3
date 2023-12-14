@@ -23,7 +23,7 @@ public class PersonaDAO {
         em.persist(persona);
         transaction.commit();
 
-        System.out.println("Partecipazione aggiunta!");
+        System.out.println("Persona aggiunta!");
     }
 
 

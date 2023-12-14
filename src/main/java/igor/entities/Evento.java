@@ -5,6 +5,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "gestione_eventi")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorColumn(name = "tipo_evento")
 public class Evento {
 
     @Id

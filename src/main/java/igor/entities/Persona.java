@@ -18,16 +18,21 @@ public class Persona {
 
     private String dataDiNascita;
 
+    @Enumerated(EnumType.STRING)
     private Sesso sesso;
 
     @OneToMany(mappedBy = "persona")
     private List<Partecipazione> partecipazioni;
 
+    @ManyToOne
+    @JoinColumn(name = "garaDiAtletica")
+    private GaraDiAtletica garaDiAtletica;
+
 
     public Persona() {
     }
 
-    public Persona(String nome, String cognome, String email, String dataDiNascita, Sesso sesso, List<Partecipazione> partecipazioni) {
+    public Persona(String nome, String cognome, String email, String dataDiNascita, Sesso sesso) {
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
